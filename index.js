@@ -9,10 +9,6 @@ let browser
     browser = await remote({
         capabilities: {
             browserName: 'chrome'
-            // browserName: 'firefox',
-            // // 'moz:firefoxOptions': {
-            // //     binary: '/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox'
-            // // }
         }
     })
 
@@ -30,6 +26,9 @@ let browser
     const loginBtn = await browser.$('#ctl00_ContentPlaceHolder1_Login1_LoginButton')
     await loginBtn.click()
 
+    await browser.navigateTo('http://brillcms.com/lb')
+    browser.switchToFrame(2)
+
     const searchLink = await browser.$('#ctl00_lnkSearch')
     await searchLink.click()
 
@@ -42,10 +41,16 @@ let browser
     const r = await browser.$('#ctl00_ContentPlaceHolder1_gvRecords_ctl03_lnkDocManagement')
     await r.click()
 
+    await browser.pause(5000)
+
+    await browser.switchToFrame(null)
+    // console.log(browser.getPageSource())
+
+    await browser.switchToFrame(1)
+    // console.log(browser.getPageSource())
+
     const c = await browser.$('#copyFicheCommandButton')
     await c.click()
-
-    browser.switchToFrame(0)
 
     const b = await browser.$('body')
     await b.click()
