@@ -19,10 +19,10 @@ let browser
     await header.click()
 
     const userInput = await browser.$('#ctl00_ContentPlaceHolder1_Login1_UserName')
-    await userInput.setValue('LOGIN')
+    await userInput.setValue(process.env.BRILLCMS_USER)
 
     const passwordInput = await browser.$('#ctl00_ContentPlaceHolder1_Login1_Password')
-    await passwordInput.setValue('PASSWORD')
+    await passwordInput.setValue(process.env.BRILLCMS_PASSWORD)
 
     const loginBtn = await browser.$('#ctl00_ContentPlaceHolder1_Login1_LoginButton')
     await loginBtn.click()
