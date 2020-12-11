@@ -24,12 +24,19 @@ async function login() {
     browser.switchToFrame(2)
 }
 
-async function searchAndClickFirst(searchString) {
+async function searchAndClickFirst(pause) {
     const searchLink = await browser.$('#ctl00_lnkSearch')
     await searchLink.click()
 
-    const sInput = await browser.$('#ctl00_ContentPlaceHolder1_GeneralSearch_FieldSelectionGridView_ctl05_TextBoxFieldSelection')
-    await sInput.setValue(searchString)
+    let el
+
+    el = await browser.$('#ctl00_ContentPlaceHolder1_GeneralSearch_FieldSelectionGridView_ctl02_DropDownListFieldName')
+    await el.setValue('Contributor')
+
+    await browser.pause(pause)
+
+    el = await browser.$('#ctl00_ContentPlaceHolder1_GeneralSearch_FieldSelectionGridView_ctl02_DropDownListFieldSelection')
+    await el.setValue('SDMI')
 
     const sb = await browser.$('#ctl00_ContentPlaceHolder1_ButtonSearchAll')
     await sb.click()
@@ -90,7 +97,7 @@ async function prepareSpecEdit() {
     await browser.navigateTo('http://brillcms.com/lb/security/login.aspx?ReturnUrl=%2flb%2f')
 
     await login();
-    await searchAndClickFirst('Acta linguistica petropolitana Trudy Instituta lingvisticeskich issledovanij (ALP)');
+    await searchAndClickFirst(3000);
 
     await prepareCopy(3000);
     await copy();
