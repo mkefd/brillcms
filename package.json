@@ -1,0 +1,10 @@
+{
+  "name": "brillcms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "webdriverio": "^6.10.5"
+  }
+}
