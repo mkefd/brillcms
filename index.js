@@ -1,4 +1,7 @@
 import { remote } from 'webdriverio'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 let browser
 

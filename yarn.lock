@@ -438,6 +438,11 @@ devtools@6.10.4:
     ua-parser-js "^0.7.21"
     uuid "^8.0.0"
 
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+
 edge-paths@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/edge-paths/-/edge-paths-2.1.0.tgz"

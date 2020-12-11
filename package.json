@@ -5,6 +5,7 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "webdriverio": "^6.10.5"
   }
 }
