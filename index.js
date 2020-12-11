@@ -42,10 +42,7 @@ async function prepareCopy(pause) {
     await browser.pause(pause)
 
     await browser.switchToFrame(null)
-    // console.log(browser.getPageSource())
-
     await browser.switchToFrame(1)
-    // console.log(browser.getPageSource())
 }
 
 async function copy() {
@@ -64,6 +61,23 @@ async function clickMenuItem(item) {
     el = await browser.$('.menu')
     let el1 = await el.$('strong=' + item)
     await el1.click()
+}
+
+async function prepareSpecEdit() {
+    await browser.switchToFrame(null)
+    await browser.switchToFrame(1)
+    await browser.switchToFrame(1)
+    // console.log(browser.getPageSource())
+
+    // change ENG to RUS
+    let el0 = await browser.$('.//textNode[normalize-space()="ENG"]')
+    await browser.executeScript("arguments[0].innerHTML='RUS'", [el0])
+
+    let el = await browser.$('.//textNode[normalize-space()="(TITLESORT)"]')
+    await el.click()
+
+    await browser.switchToFrame(null)
+    await browser.switchToFrame(1)
 }
 
 (async () => {
@@ -85,6 +99,10 @@ async function clickMenuItem(item) {
     await clickMenuItem('ABSTRACT');
     await clickMenuItem('KW');
     await clickMenuItem('ORIGNAME');
+
+    await prepareSpecEdit();
+    await clickMenuItem('ORIGTITLE');
+    await clickMenuItem('TRANSLATN');
 
     // await browser.deleteSession()
 })().catch((err) => {
